@@ -1,0 +1,31 @@
+<form class="form-signin">
+  <div class="text-center mb-4">
+    <img class="mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">로그인</h1>
+    <p>계정이 없다면
+      <%= link_to '회원가입', new_user_registration_path %>
+      을 해주세요.</p>
+  </div>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="form-label-group">
+    <%= f.input :email,
+                required: false,
+                id: "inputEmail",
+                class: "form-control"%>
+  </div>
+
+  <div class="form-label-group">
+    <%= f.input :password,
+                required: false,
+                id: "inputPassword",
+                class: "form-control"%>
+  </div>
+
+  <div class="checkbox mb-3">
+    <%= f.input :remember_me,
+                as: :boolean if devise_mapping.rememberable? %>
+  </div>
+  <%= f.button :submit, "Sign_in", class: "btn btn-lg btn-primary btn-block" %>
+
+<% end %>
+</form>
